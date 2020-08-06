@@ -1,0 +1,3 @@
+[submodule "Mobile/devflix"]
+	path = Mobile/devflix
+	url = https://github.com/crossroad-developers/devflix
