@@ -1,6 +1,8 @@
 import React from 'react';
 import {createStackNavigator } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { MaterialIcons, FontAwesome } from '@expo/vector-icons';
+
 
 import Login from '../Views/Login';
 import Home from '../Views/Home';
@@ -11,9 +13,29 @@ const AuthStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const TabBottom = () => (
-    <Tab.Navigator>
-        <Tab.Screen name="Home" component={Home} options={{ headerShown: false }}/>
-        <Tab.Screen name="Search" component={Search} options={{ headerShown: false }}/>
+    <Tab.Navigator
+        tabBarOptions = {{
+            activeTintColor: '#fff',
+            labelStyle: {
+                fontSize: 14
+            },
+            style: { 
+                backgroundColor: '#000',
+            }
+        }}
+    >
+        <Tab.Screen name="Inicio" component={Home} options={{ headerShown: false, 
+            tabBarIcon: ({size, color}) => (
+                <MaterialIcons name='home' size={size} color ={color}/>
+            )
+        }}/>
+        <Tab.Screen name="Busca" component={Search} options={{ headerShown: false,
+            
+                tabBarIcon: ({size, color}) => (
+                 <FontAwesome name='search' size={size} color={color}/>
+                )
+            }}
+         />
     </Tab.Navigator>
 )
 

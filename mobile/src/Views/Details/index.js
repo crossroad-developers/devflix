@@ -9,7 +9,7 @@ export default function Details() {
 
         return (
             <Container>
-                <Text> textInComponent </Text>
+                <Text> Details </Text>
                 {/* Preciso receber o id da stream para poder exibir os detalhes aqui */}
             </Container>
         );
