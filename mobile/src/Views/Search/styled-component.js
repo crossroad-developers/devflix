@@ -31,7 +31,6 @@ export const CancelButton = styled.TouchableOpacity`
 `;
 
 export const Cancel = styled.Text`
-  ${'' /* background: #eee; */}
   color:#fff;
   font-weight: bold;
   margin-left: 15px;
@@ -40,15 +39,13 @@ export const Cancel = styled.Text`
 export const Main = styled.View`
   justify-content: center;
   margin: 20px 0px;
-  height: 200px;
   background: #323232;
   padding: 0 10px;
 `;
 
 export const Results = styled.View`
   flex-direction: row;
-  ${'' /* flex-wrap: wrap; */}
-  ${'' /* align-content: flex-start; */}
+  flex-wrap: wrap;
 `;
 
 export const Details = styled.TouchableOpacity`
@@ -65,5 +62,4 @@ export const TitleStreamer = styled.Text`
     color: #fff;
     font-size: 18px;
     font-weight: bold;
-    ${'' /* margin: 0 20px; */}
 `;

@@ -5,11 +5,12 @@ import {
 } 
 from './styled-component'
 
-export default function Details() {
+export default function Details({ navigation }) {
 
+    const UserTwitch = navigation.getParam('username');
         return (
             <Container>
-                <Text> Details </Text>
+                <Text> {UserTwitch} </Text>
                 {/* Preciso receber o id da stream para poder exibir os detalhes aqui */}
             </Container>
         );

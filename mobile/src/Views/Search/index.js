@@ -16,7 +16,28 @@ import {
 } 
 from './styled-component'
 
-
+const items = [
+    {
+        key: String(Math.random()),
+        img: gratis,
+        username: 'Gratis'
+    },
+    {
+        key: String(Math.random()),
+        img: gratis,
+        username: 'Gratis02'
+    },
+    {
+        key: String(Math.random()),
+        img: gratis,
+        username: 'Gratis03'
+    },
+    {
+        key: String(Math.random()),
+        img: gratis,
+        username: 'Gratis04'
+    },
+]
 
 export default function Search({navigation}) {
 
@@ -43,28 +64,19 @@ export default function Search({navigation}) {
                         </CancelButton>
                     </Header>
 
+
                     <Main>
-                        <Results>
-                            <Details onPress={() => navigation.navigate('Details')}>
-                                <UsersTwitch source={gratis}/>
-                                <TitleStreamer> Gratis </TitleStreamer>
-                            </Details>
-                            <Details>
-                                <UsersTwitch source={gratis}/>
-                                <TitleStreamer> Gratis </TitleStreamer>
-                            </Details>
-                            <Details>
-                                <UsersTwitch source={gratis}/>
-                                <TitleStreamer> Gratis </TitleStreamer>
-                            </Details>
-                            <Details>
-                                <UsersTwitch source={gratis}/>
-                                <TitleStreamer> Gratis </TitleStreamer>
-                            </Details>
-                            <Details>
-                                <UsersTwitch source={gratis}/>
-                                <TitleStreamer> Gratis </TitleStreamer>
-                            </Details>
+                        <Results >
+                            {items.map((item) => {
+                                return (
+                                    <Details key={item.key} onPress={() => {navigation.navigate('Details', {
+                                        username: item.username})
+                                        }}>
+                                        <UsersTwitch source={item.img}/>
+                                        <TitleStreamer> {item.username} </TitleStreamer>
+                                    </Details>
+                                )
+                            })}
                         </Results>
                     </Main>
 
