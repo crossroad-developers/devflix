@@ -30,6 +30,7 @@ yarn start
 # Libraries
 - react-native for the iOS & Android Apps
 - react-native @react-navigation/stack
+- react-native @react-navigation/bottom
 - react-native styled-components :)
 
 # Ready screens
