@@ -36,6 +36,8 @@ yarn start
 Just layout
 - Login
 - Home
+- Search
+- Details
 
 # What's next
 - Development screen Details
