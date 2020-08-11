@@ -77,20 +77,6 @@ describe('>>> Twitch Client unit lib tests', () => {
             expect(authURL).to.be.equal('https://id.twitch.tv/oauth2/token?client_id=client_id&client_secret=client_secret&grant_type=client_credentials')
         })
 
-        it('setScope should throw an error if none was passed', () => {
-            expect(() => {
-                const twitch = new Twitch({ // eslint-disable-line
-                    grant_type: 'client_credentials',
-                    client_id: 'client_id',
-                    client_secret: 'client_secret',
-                    auth_token_uri: 'auth_token_uri',
-                    redirect_url: 'redirect_url'
-                })
-
-                twitch.setScope()
-            }).to.throw(Error, 'You should pass an scope!')
-        })
-
         it('setScope should throw an error if scope is not an array', () => {
             expect(() => {
                 const twitch = new Twitch({ // eslint-disable-line

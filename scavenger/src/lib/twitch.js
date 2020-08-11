@@ -58,9 +58,6 @@ class Twitch {
     }
 
     setScope (scopeArray) {
-        if (!scopeArray) {
-            throw new Error('You should pass an scope!')
-        }
 
         if (!Array.isArray(scopeArray)) {
             throw new Error('It should be an Array!')
