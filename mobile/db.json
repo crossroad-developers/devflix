@@ -1,0 +1,55 @@
+{
+  "data": [
+    {
+      "id": "1",
+      "user_id": "23161357",
+      "user_name": "LIRIK",
+      "game_id": "417752",
+      "type": "live",
+      "title": "Hey Guys, It's Monday - Twitter: @Lirik",
+      "viewer_count": 32575,
+      "started_at": "2017-08-14T16:08:32Z",
+      "language": "en",
+      "thumbnail_url": "https://static-cdn.jtvnw.net/previews-ttv/live_user_lirik-{width}x{height}.jpg"
+    },
+    {
+      "id": "2",
+      "user_id": "7236692",
+      "user_name": "BillyBob",
+      "game_id": "29307",
+      "type": "live",
+      "title": "[Punday Monday] Necromancer - Dan's First Character - Maps - !build",
+      "viewer_count": 5723,
+      "started_at": "2017-08-14T15:45:17Z",
+      "language": "en",
+      "thumbnail_url": "https://static-cdn.jtvnw.net/previews-ttv/live_user_dansgaming-{width}x{height}.jpg"
+    },
+    {
+      "id": "3",
+      "user_id": "7236692",
+      "user_name": "Bob",
+      "game_id": "29307",
+      "type": "live",
+      "title": "Liga das Lendas",
+      "viewer_count": 5723,
+      "started_at": "2017-08-14T15:45:17Z",
+      "language": "en",
+      "thumbnail_url": "https://static-cdn.jtvnw.net/previews-ttv/live_user_dansgaming-{width}x{height}.jpg"
+    },
+    {
+      "id": "4",
+      "user_id": "7236692",
+      "user_name": "Jonas",
+      "game_id": "29307",
+      "type": "live",
+      "title": "Carteado!!",
+      "viewer_count": 5723,
+      "started_at": "2017-08-14T15:45:17Z",
+      "language": "en",
+      "thumbnail_url": "https://static-cdn.jtvnw.net/previews-ttv/live_user_dansgaming-{width}x{height}.jpg"
+    }
+  ],
+  "pagination": {
+    "cursor": "eyJiIjpudWxsLCJhIjp7Ik9mZnNldCI6MjB9fQ=="
+  }
+}
