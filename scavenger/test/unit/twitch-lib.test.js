@@ -52,7 +52,7 @@ describe('>>> Twitch Client unit lib tests', () => {
     })
 
     context('>> Authorization', () => {
-        it('Authentication should return JSON-encoded object TwitchAPI', () => {
+        it('Authorization should return JSON-encoded object TwitchAPI', () => {
             const twitch = new Twitch({ // eslint-disable-line
                 grant_type: 'client_credentials',
                 client_id: 'client_id',
@@ -61,11 +61,7 @@ describe('>>> Twitch Client unit lib tests', () => {
                 redirect_url: 'redirect_url'
             })
 
-            twitch.setScope(['user_read'])
-
-            let twitchAPIAuthInformation = twitch.authenticate()
-
-            expect(twitchAPIAuthInformation).to.be.an('object')
+            expect(twitch.authorize()).to.be.an('object')
         })
 
 
