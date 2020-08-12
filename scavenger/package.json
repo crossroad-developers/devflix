@@ -4,7 +4,8 @@
   "description": "Scavenger bot",
   "main": "index.js",
   "scripts": {
-    "test:unit": "DEBUG=scavenger:test NODE_ENV=test nyc mocha --reporter spec --exit test/**/*.test.js",
+    "test:unit": "DEBUG=scavenger:test NODE_ENV=test nyc mocha --reporter spec --exit test/unit/**/*.test.js",
+    "test:integration": "DEBUG=scavenger:test NODE_ENV=test nyc mocha --reporter spec --exit test/integration/**/*.test.js",
     "dev": "DEBUG=scavenger:dev NODE_ENV=development node src/index.js"
   },
   "repository": {
@@ -27,6 +28,8 @@
     "debug": "^4.1.1",
     "eslint": "^7.6.0",
     "mocha": "^8.1.0",
-    "nyc": "^15.1.0"
+    "nock": "^13.0.4",
+    "nyc": "^15.1.0",
+    "supertest": "^4.0.2"
   }
 }
