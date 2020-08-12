@@ -80,10 +80,26 @@ class Twitch {
         return `${this.options.auth_token_uri}?${new URLSearchParams(query_string)}`
     }
 
-    authorize () {
+    createRequestHeaders () { // eslint-disable-line
+        const requestHeaders = {
+            headers: {
+                'client-id': this.options.client_id,
+                Authorization: `Bearer ${this.options.client_secret}`
+            }
+        }
 
+        return requestHeaders
     }
 
+    authorize() { // eslint-disable-line
+        
+        return {
+            access_token: 'access_token',
+            expires_in: 'expires_in',
+            scope: 'scope',
+            token_type: 'token_type'
+        }
+    }
 }
 
 module.exports = Twitch

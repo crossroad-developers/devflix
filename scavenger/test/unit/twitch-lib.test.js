@@ -3,6 +3,14 @@ const { describe, it } = require('mocha')
 const { expect } = require('chai')
 const Twitch = require('../../src/lib/twitch')
 
+const TWITCH_AUTH_PARAMS = {
+    grant_type: 'client_credentials',
+    client_id: 'client_id',
+    client_secret: 'client_secret',
+    auth_token_uri: 'https://id.twitch.tv/oauth2/token',
+    redirect_url: 'redirect_url'
+}
+
 describe('>>> Twitch Client unit lib tests', () => {
 
     context('>> Twitch lib', () => {
@@ -25,19 +33,12 @@ describe('>>> Twitch Client unit lib tests', () => {
                     auth_token_uri: 'auth_token_uri',
                     redirect_url: 'redirect_url'
                 })
-                twitch.getAccessToken()
             }).to.throw(Error, 'You should pass one of the three grant_type options: authorization_code, client_credentials, code')
         })
 
         it('shouldnt throw errors if all min required params was passed', () => {
             expect(() => {
-                const twitch = new Twitch({ // eslint-disable-line
-                    grant_type: 'client_credentials',
-                    client_id: 'client_id',
-                    client_secret: 'client_secret',
-                    auth_token_uri: 'auth_token_uri',
-                    redirect_url: 'redirect_url'
-                })
+                const twitch = new Twitch(TWITCH_AUTH_PARAMS)
             }).to.not.throw()
         })
 
@@ -53,39 +54,30 @@ describe('>>> Twitch Client unit lib tests', () => {
 
     context('>> Authorization', () => {
         it('Authorization should return JSON-encoded object TwitchAPI', () => {
-            const twitch = new Twitch({ // eslint-disable-line
-                grant_type: 'client_credentials',
-                client_id: 'client_id',
-                client_secret: 'client_secret',
-                auth_token_uri: 'auth_token_uri',
-                redirect_url: 'redirect_url'
-            })
+            const twitch = new Twitch(TWITCH_AUTH_PARAMS)
 
-            expect(twitch.authorize()).to.be.an('object')
+            expect(twitch.authorize()).to.have.keys([
+                'access_token',
+                'expires_in', 
+                'scope', 
+                'token_type'
+            ])
         })
 
+        it.only('getAuthorizationURL should return a valid url auth token twitch', () => {
+            const twitch = new Twitch(TWITCH_AUTH_PARAMS)
 
-        it('getAuthorizationURL should return a valid url auth token twitch', () => {
-            const twitch = new Twitch({ // eslint-disable-line
-                grant_type: 'client_credentials',
+            const query_string = new URLSearchParams({
                 client_id: 'client_id',
                 client_secret: 'client_secret',
-                auth_token_uri: 'https://id.twitch.tv/oauth2/token',
-                redirect_url: 'redirect_url'
+                grant_type: 'client_credentials'
             })
-            const authURL = twitch.getAuthorizationURL()
-            expect(authURL).to.be.equal('https://id.twitch.tv/oauth2/token?client_id=client_id&client_secret=client_secret&grant_type=client_credentials')
+            expect(twitch.getAuthorizationURL()).to.be.equal(`${TWITCH_AUTH_PARAMS.auth_token_uri}?${query_string}`)
         })
 
         it('setScope should throw an error if scope is not an array', () => {
             expect(() => {
-                const twitch = new Twitch({ // eslint-disable-line
-                    grant_type: 'client_credentials',
-                    client_id: 'client_id',
-                    client_secret: 'client_secret',
-                    auth_token_uri: 'auth_token_uri',
-                    redirect_url: 'redirect_url'
-                })
+                const twitch = new Twitch(TWITCH_AUTH_PARAMS)
 
                 twitch.setScope('user_read')
             }).to.throw(Error, 'It should be an Array!')
@@ -93,16 +85,19 @@ describe('>>> Twitch Client unit lib tests', () => {
 
         it('setScope shouldnt throw an error if scope was passed', () => {
             expect(() => {
-                const twitch = new Twitch({ // eslint-disable-line
-                    grant_type: 'client_credentials',
-                    client_id: 'client_id',
-                    client_secret: 'client_secret',
-                    auth_token_uri: 'auth_token_uri',
-                    redirect_url: 'redirect_url'
-                })
+                const twitch = new Twitch(TWITCH_AUTH_PARAMS)
 
                 twitch.setScope(['user_read'])
             }).to.not.throw()
+        })
+
+        it('createRequestHeaders should return authorization request header', () => {
+            const twitch = new Twitch(TWITCH_AUTH_PARAMS)
+
+            expect(twitch.createRequestHeaders().headers).to.have.keys([
+                'client-id',
+                'Authorization'
+            ])
         })
     })
     
