@@ -64,7 +64,7 @@ describe('>>> Twitch Client unit lib tests', () => {
             ])
         })
 
-        it.only('getAuthorizationURL should return a valid url auth token twitch', () => {
+        it('getAuthorizationURL should return a valid url auth token twitch', () => {
             const twitch = new Twitch(TWITCH_AUTH_PARAMS)
 
             const query_string = new URLSearchParams({
