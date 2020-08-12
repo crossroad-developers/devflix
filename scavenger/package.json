@@ -4,7 +4,7 @@
   "description": "Scavenger bot",
   "main": "index.js",
   "scripts": {
-    "test:unit": "DEBUG=scavenger:dev NODE_ENV=test mocha --reporter spec --exit test/**/*",
+    "test:unit": "DEBUG=scavenger:test NODE_ENV=test nyc mocha --reporter spec --exit test/**/*.test.js",
     "dev": "DEBUG=scavenger:dev NODE_ENV=development node src/index.js"
   },
   "repository": {
@@ -22,10 +22,11 @@
   },
   "homepage": "https://github.com/rodrigocnascimento/devflix#readme",
   "devDependencies": {
+    "chai": "^4.2.0",
     "config": "^3.3.1",
     "debug": "^4.1.1",
     "eslint": "^7.6.0",
-    "chai": "^4.2.0",
-    "mocha": "^8.1.0"
+    "mocha": "^8.1.0",
+    "nyc": "^15.1.0"
   }
 }
