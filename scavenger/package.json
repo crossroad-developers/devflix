@@ -6,7 +6,7 @@
   "scripts": {
     "test:unit": "DEBUG=scavenger:test NODE_ENV=test nyc mocha --reporter spec --exit test/unit/**/*.test.js",
     "test:integration": "DEBUG=scavenger:test NODE_ENV=test nyc mocha --reporter spec --exit test/integration/**/*.test.js",
-    "dev": "DEBUG=scavenger:dev NODE_ENV=development node src/index.js"
+    "dev": "DEBUG=scavenger:development NODE_ENV=development node src/index.js"
   },
   "repository": {
     "type": "git",
@@ -31,5 +31,8 @@
     "nock": "^13.0.4",
     "nyc": "^15.1.0",
     "supertest": "^4.0.2"
+  },
+  "dependencies": {
+    "got": "^11.5.2"
   }
 }

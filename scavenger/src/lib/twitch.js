@@ -1,3 +1,5 @@
+const request = require('got')
+
 /**
  * Twitch Client
  * @param {*} options Auth options for twitch client
@@ -80,24 +82,40 @@ class Twitch {
         return `${this.options.auth_token_uri}?${new URLSearchParams(query_string)}`
     }
 
-    createRequestHeaders () { // eslint-disable-line
+    createRequestHeaders (access_token) { // eslint-disable-line
         const requestHeaders = {
             headers: {
                 'client-id': this.options.client_id,
-                Authorization: `Bearer ${this.options.client_secret}`
+                Authorization: `Bearer ${access_token}`
             }
         }
 
         return requestHeaders
     }
 
-    authorize() { // eslint-disable-line
+    async get (url) {
+        const auth = await this.authorize()
+
+        const { headers } = this.createRequestHeaders(auth.access_token)
+
+        return request(url, {
+            responseType: 'json',
+            headers
+        })
+    }
+
+    async authorize() { // eslint-disable-line
+        const { body } = await request.post(this.getAuthorizationURL(), {
+            responseType: 'json'
+        })
         
+        const { access_token, expires_in, scope, token_type } = body
+
         return {
-            access_token: 'access_token',
-            expires_in: 'expires_in',
-            scope: 'scope',
-            token_type: 'token_type'
+            access_token,
+            expires_in,
+            scope,
+            token_type
         }
     }
 }
