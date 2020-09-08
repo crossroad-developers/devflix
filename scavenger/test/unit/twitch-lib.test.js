@@ -53,7 +53,6 @@ describe('>>> Twitch Client unit lib tests', () => {
     })
 
     context('>> Authorization', () => {
-
         it('getAuthorizationURL should return a valid url auth token twitch', () => {
             const twitch = new Twitch(TWITCH_API_CONFIG)
 

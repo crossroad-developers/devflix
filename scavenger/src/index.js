@@ -1,6 +1,7 @@
 const config = require('config')
 const Twitch = require('./lib/twitch')
 const debug = require('debug')('scavenger:development')
+
 const { auth_token_uri, client_id, client_secret, api_url, api_version, redirect_url } = config.get('twitch')
 
 const TWITCH_CONFIG = {
@@ -13,7 +14,7 @@ const TWITCH_CONFIG = {
 
 ;(async () => {
     debug('> TwitchAPI')
-    
+
     try {
         const twitch_client = new Twitch(TWITCH_CONFIG)
 

@@ -98,7 +98,6 @@ describe('>>> Twitch Client integration lib tests', () => {
         })
 
         it('should autorize to late request with status 200 and right params', (done) => {
-
             /*
              * nock('https://id.twitch.tv/').
              *     post('/oauth2/token').
@@ -124,4 +123,3 @@ describe('>>> Twitch Client integration lib tests', () => {
     })
 
 })
-// Live_137937498_AQQJCZ6MUuknC4Fz0bc9hZ9UL61yM7
