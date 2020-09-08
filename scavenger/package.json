@@ -4,9 +4,10 @@
   "description": "Scavenger bot",
   "main": "index.js",
   "scripts": {
-    "test": "DEBUG=scavenger:dev NODE_ENV=test mocha --reporter spec --exit tests/",
-    "test:watch": "DEBUG=scavenger:dev NODE_ENV=test mocha --watch --reporter spec --exit tests/",
-    "dev": "DEBUG=scavenger:dev NODE_ENV=development node src/index.js"
+    "test:unit": "DEBUG=scavenger:test NODE_ENV=test nyc $(yarn bin)/mocha --reporter spec test/unit/**/*.test.js --exit",
+    "test:integration": "DEBUG=scavenger:test NODE_ENV=test nyc $(yarn bin)/mocha --reporter spec test/integration/**/*.test.js --exit",
+    "test:all": "DEBUG=scavenger:test NODE_ENV=test nyc $(yarn bin)/mocha --reporter doc test/**/*.test.js > test/docs/all.html --exit",
+    "dev": "DEBUG=scavenger:development NODE_ENV=development node src/index.js"
   },
   "repository": {
     "type": "git",
@@ -28,13 +29,10 @@
     "debug": "^4.1.1",
     "eslint": "^7.6.0",
     "mocha": "^8.1.0",
-    "nodemon": "^2.0.4",
-    "supertest": "^4.0.2"
+    "nock": "^13.0.4",
+    "nyc": "^15.1.0"
   },
   "dependencies": {
-    "expo": "^38.0.9",
-    "global": "^4.4.0",
-    "got": "^11.5.1",
-    "mongoose": "^5.9.27"
+    "got": "^11.5.2"
   }
 }
