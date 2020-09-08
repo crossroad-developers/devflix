@@ -1,0 +1,174 @@
+    <section class="suite">
+      <h1>&#x3E;&#x3E;&#x3E; Twitch Client integration lib tests</h1>
+      <dl>
+        <section class="suite">
+          <h1>&#x3E;&#x3E; Authorization</h1>
+          <dl>
+            <dt>authorize() should return JSON-encoded object TwitchAPI</dt>
+            <dt>/home/rodrigo/Projects/devflix/scavenger/test/integration/twitch-lib.test.js</dt>
+            <dd><pre><code>async () =&#x3E; {
+            const twitch = new Twitch(TWITCH_API_CONFIG)
+            twitch.scope = [&#x27;user_read&#x27;]
+            /*
+             * Expect(await twitch.authorize()).to.be.an(&#x27;object&#x27;)
+             * const { body } = await request.post(twitch.getAuthorizationURL(), {
+             *     responseType: &#x27;json&#x27;
+             * })
+             */
+            /*
+             * Const scope = nock(&#x27;https://id.twitch.tv/&#x27;).
+             *     post(&#x27;/oauth2/tokeneixon&#x27;).
+             *     reply(statuses.ok.code, twitch_response.authorization)
+             */
+            // Debug(&#x27;&#x3E; scope&#x27;, scope)
+            
+            /*
+             * Request.
+             *     post(&#x27;/oauth2/token&#x27;).
+             *     end((err, res) =&#x3E; {
+             *         if (err) {
+             *             console.error(err)
+             *         }
+             *         expect(res.body.access_token).to.be.equal(&#x27;0123456789abcdefghijABCDEFGHIJ&#x27;)
+             */
+            /*
+             *         Done()
+             *     })
+             */
+        }</code></pre></dd>
+            <dt>authorize should return JSON-encoded object TwitchAPI</dt>
+            <dt>/home/rodrigo/Projects/devflix/scavenger/test/integration/twitch-lib.test.js</dt>
+            <dd><pre><code>async () =&#x3E; {
+            // Const twitch = new Twitch(TWITCH_API_CONFIG)
+            /*
+             * Expect(await twitch.authorize()).to.have.keys([
+             *     &#x27;access_token&#x27;,
+             *     &#x27;expires_in&#x27;,
+             *     &#x27;scope&#x27;,
+             *     &#x27;token_type&#x27;
+             * ])
+             */
+        }</code></pre></dd>
+            <dt>should autorize to late request with status 200 and right params</dt>
+            <dt>/home/rodrigo/Projects/devflix/scavenger/test/integration/twitch-lib.test.js</dt>
+            <dd><pre><code>/*
+             * nock(&#x27;https://id.twitch.tv/&#x27;).
+             *     post(&#x27;/oauth2/token&#x27;).
+             *     reply(statuses.ok.code, twitch_response.authorization)
+             */
+            /*
+             * Request.
+             *     post(&#x27;/oauth2/token&#x27;).
+             *     end((err, res) =&#x3E; {
+             *         if (err) {
+             *             console.error(err) 
+             *         }
+             *         expect(res.body.access_token).to.be.equal(&#x27;0123456789abcdefghijABCDEFGHIJ&#x27;)
+             */
+            /*
+             *         Done()
+             *     })
+             */
+            done()</code></pre></dd>
+          </dl>
+        </section>
+      </dl>
+    </section>
+    <section class="suite">
+      <h1>&#x3E;&#x3E;&#x3E; Twitch Client unit lib tests</h1>
+      <dl>
+        <section class="suite">
+          <h1>&#x3E;&#x3E; Twitch lib</h1>
+          <dl>
+            <dt>should be a function</dt>
+            <dt>/home/rodrigo/Projects/devflix/scavenger/test/unit/twitch-lib.test.js</dt>
+            <dd><pre><code>expect(Twitch).to.be.an(&#x27;function&#x27;)</code></pre></dd>
+            <dt>should throw an error if none option is passed</dt>
+            <dt>/home/rodrigo/Projects/devflix/scavenger/test/unit/twitch-lib.test.js</dt>
+            <dd><pre><code>expect(() =&#x3E; {
+    const twitch = new Twitch() // eslint-disable-line
+}).to.throw(Error, &#x27;You should pass the required params&#x27;)</code></pre></dd>
+            <dt>should throw error if grant_type was not one of the three grant type options</dt>
+            <dt>/home/rodrigo/Projects/devflix/scavenger/test/unit/twitch-lib.test.js</dt>
+            <dd><pre><code>expect(() =&#x3E; {
+    const twitch = new Twitch({ // eslint-disable-line
+        grant_type: &#x27;grant_type&#x27;,
+        client_id: &#x27;client_id&#x27;,
+        client_secret: &#x27;client_secret&#x27;,
+        auth_token_uri: &#x27;auth_token_uri&#x27;,
+        redirect_url: &#x27;redirect_url&#x27;
+    })
+}).to.throw(Error, &#x27;You should pass one of the three grant_type options: authorization_code, client_credentials, code&#x27;)</code></pre></dd>
+            <dt>shouldnt throw errors if all min required params was passed</dt>
+            <dt>/home/rodrigo/Projects/devflix/scavenger/test/unit/twitch-lib.test.js</dt>
+            <dd><pre><code>expect(() =&#x3E; {
+    const twitch = new Twitch(TWITCH_API_CONFIG)
+}).to.not.throw()</code></pre></dd>
+            <dt>should throw error if missing any required param and which required param is missing</dt>
+            <dt>/home/rodrigo/Projects/devflix/scavenger/test/unit/twitch-lib.test.js</dt>
+            <dd><pre><code>expect(() =&#x3E; {
+    const twitch = new Twitch({ // eslint-disable-line
+        client_id: &#x27;client_id&#x27;,
+        client_secret: &#x27;client_secret&#x27;
+    })
+}).to.throw(Error, &#x27;Params required: grant_type, auth_token_uri, redirect_url&#x27;)</code></pre></dd>
+          </dl>
+        </section>
+        <section class="suite">
+          <h1>&#x3E;&#x3E; Authorization</h1>
+          <dl>
+            <dt>getAuthorizationURL should return a valid url auth token twitch</dt>
+            <dt>/home/rodrigo/Projects/devflix/scavenger/test/unit/twitch-lib.test.js</dt>
+            <dd><pre><code>const twitch = new Twitch(TWITCH_API_CONFIG)
+twitch.scope = [
+    &#x27;user_read&#x27;,
+    &#x27;user_email&#x27;
+]
+const query_string = new URLSearchParams({
+    client_id: &#x27;client_id&#x27;,
+    client_secret: &#x27;client_secret&#x27;,
+    grant_type: &#x27;client_credentials&#x27;,
+    scope: twitch.scope
+})
+expect(twitch.getAuthorizationURL()).to.be.equal(&#x60;${TWITCH_API_CONFIG.auth_token_uri}?${query_string}&#x60;)</code></pre></dd>
+            <dt>set scope should throw an error if scope is not an array</dt>
+            <dt>/home/rodrigo/Projects/devflix/scavenger/test/unit/twitch-lib.test.js</dt>
+            <dd><pre><code>expect(() =&#x3E; {
+    const twitch = new Twitch(TWITCH_API_CONFIG)
+    twitch.scope = &#x27;user_read&#x27;
+}).to.throw(Error, &#x27;It should be an Array!&#x27;)</code></pre></dd>
+            <dt>set scope shouldnt throw an error if scope was passed</dt>
+            <dt>/home/rodrigo/Projects/devflix/scavenger/test/unit/twitch-lib.test.js</dt>
+            <dd><pre><code>expect(() =&#x3E; {
+    const twitch = new Twitch(TWITCH_API_CONFIG)
+    twitch.scope = [
+        &#x27;user_read&#x27;,
+        &#x27;user_email&#x27;
+    ]
+}).to.not.throw()</code></pre></dd>
+            <dt>get scope should return encoded URIComponent param</dt>
+            <dt>/home/rodrigo/Projects/devflix/scavenger/test/unit/twitch-lib.test.js</dt>
+            <dd><pre><code>const twitch = new Twitch(TWITCH_API_CONFIG)
+twitch.scope = [
+    &#x27;user_read&#x27;,
+    &#x27;user_email&#x27;
+]
+
+expect(twitch.scope).to.be.equal(&#x27;user_read user_email&#x27;)</code></pre></dd>
+            <dt>createRequestHeaders should return authorization request header</dt>
+            <dt>/home/rodrigo/Projects/devflix/scavenger/test/unit/twitch-lib.test.js</dt>
+            <dd><pre><code>const twitch = new Twitch(TWITCH_API_CONFIG)
+expect(twitch.createRequestHeaders().headers).to.have.keys([
+    &#x27;client-id&#x27;,
+    &#x27;Authorization&#x27;
+])</code></pre></dd>
+          </dl>
+        </section>
+      </dl>
+    </section>
+-----------|---------|----------|---------|---------|-------------------
+File       | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-----------|---------|----------|---------|---------|-------------------
+All files  |   81.82 |    91.67 |   85.71 |   79.49 |                   
+ twitch.js |   81.82 |    91.67 |   85.71 |   79.49 | 101-126           
+-----------|---------|----------|---------|---------|-------------------
